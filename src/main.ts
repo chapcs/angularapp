@@ -1,4 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { provideRouter } from '@angular/router';
+import routeConfig from './app/route';
 
 //import { AppModule } from './app/app.module';
 
@@ -6,8 +8,13 @@ import { bootstrapApplication,provideProtractorTestingSupport } from '@angular/p
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent,
-    {providers: [provideProtractorTestingSupport()]})
-  .catch(err => console.error(err));
+    {
+      providers: [
+        provideProtractorTestingSupport(),
+        provideRouter(routeConfig)
+      ]
+    }
+  ).catch(err => console.error(err));
 
 
 /*platformBrowserDynamic().bootstrapModule(AppModule)
